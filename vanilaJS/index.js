@@ -24,7 +24,7 @@ const rows = [
     [
         'JS',
         'Android, iOS, Windows, Mac',
-        '250K',
+        '275K',
         '9/10',
         '15.8%'
     ],
@@ -37,6 +37,7 @@ const rows = [
     ]
 ]
 
+// Обновление таблицы
 function updateTable(rows) {
     const body = document.querySelector('.table-body')
 
@@ -68,8 +69,38 @@ function updateTable(rows) {
         })
         body.appendChild(rowElement)
     })
-
-
 }
 
 updateTable(rows)
+
+
+// ПОИСК
+const button = document.querySelector('.search-button')
+button.addEventListener('click', () => {
+    const searchInputElement = document.querySelector('.search-input')
+    searchByText(rows, searchInputElement.value)
+})
+
+function searchByText(rows, str) {
+    let counter = 0;
+    const body = document.querySelector('.table-body')
+
+    rows.forEach((row, rowIdx) => {
+        row.forEach((column, columnIdx) => {
+            if (column.toLowerCase().includes(str.toLowerCase())) {
+                body.childNodes[rowIdx].childNodes[columnIdx].className = 'column column-active'
+                counter++
+            } else {
+                body.childNodes[rowIdx].childNodes[columnIdx].className = 'column'
+            }
+        })
+    })
+
+    const counterElement = document.querySelector('.counter')
+
+    if (counter === 0) {
+        counterElement.textContent = 'Ничего не найдено'
+    } else {
+        counterElement.textContent = `${counter}`
+    }
+}

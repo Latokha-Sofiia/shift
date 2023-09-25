@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+.search {
+    margin: 20px auto;
+    width: 80vw;
+}
+
+.counter {
+    margin: 20px auto;
+    width: 80vw;
+    font-weight: 600;
+    font-size: 20px;
+}
+
 .table {
     width: 80vw;
     margin: 10px auto;
@@ -24,6 +36,10 @@
     border-bottom: 3px solid blueviolet;
 }
 
+.column-active {
+    background-color: #da0a0a;
+}
+
 .column {
     flex: 1;
     border-right: 3px solid blueviolet;
@@ -32,6 +48,7 @@
 .mobile-column {
     padding: 5px;
 }
+
 .mobile-column:hover {
     background-color: #d218b1;
     color: white;
@@ -41,6 +58,7 @@
 .desktop-column {
     padding: 5px;
 }
+
 .desktop-column:hover {
     background-color: #d218b1;
     color: white;
@@ -51,15 +69,31 @@
     border-right: none;
 }
 
-/* MOBILE */
-@media only screen and (max-width: 420px) {
+/*MOBILE*/
+@media screen and (max-width: 800px) {
+    .table {
+        width: 95vw;
+    }
+
+    .row-heading {
+        display: none;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .column {
+        border: none;
+    }
+
     .desktop-column {
         display: none;
     }
 }
 
-/* DESKTOP */
-@media only screen and (min-width: 421px) {
+/*DESKTOP*/
+@media screen and (min-width: 801px) {
     .mobile-column {
         display: none;
     }
